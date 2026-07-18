@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Brain Train Master PRD</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 44em;
+      padding: 40px 24px;
+      line-height: 1.6;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3, h4 {
+      color: #0f172a;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+    h1 { font-size: 2.2em; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.6em; margin-top: 1.8em; }
+    h3 { font-size: 1.2em; }
+    p, li { color: #334155; }
+    blockquote {
+      margin: 1.5em 0;
+      padding: 0.5em 1em;
+      border-left: 4px solid #6366f1;
+      background-color: #f8fafc;
+      color: #475569;
+      font-style: italic;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, monospace;
+      font-size: 85%;
+      background-color: #f1f5f9;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+    }
+    pre {
+      background-color: #f8fafc;
+      padding: 1em;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      overflow: auto;
+    }
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      font-size: 90%;
+    }
+    ul, ol { padding-left: 1.5em; }
+    li { margin-bottom: 0.5em; }
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 2em 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Brain Train 🚂</h1>
+<h2>Master Product Requirements Document (PRD)</h2>
+
+<blockquote>
+  <p><strong>Tagline:</strong> All Aboard for Olympiad Success!</p>
+</blockquote>
+
+<hr />
+
+<h2>1. Vision & Core Philosophy</h2>
+<p>Brain Train is a premium Android Olympiad preparation app built specifically for an advanced Grade 2 student in India. The application moves completely away from dry, test-based stress, re-imagining competitive exam practice as a magical, progressive train journey. Claude Code serves as the autonomous development agent, and Google Gemini is the exclusive runtime AI provider.</p>
+
+<hr />
+
+<h2>2. Core Technical Architecture</h2>
+
+<h3>Offline-First Guarantee (Strict Compliance)</h3>
+<p>To optimize performance and minimize network instability, the application must execute <strong>exactly one Gemini API call</strong> per active quiz session at the absolute beginning. Once the complete quiz package payload is downloaded, the application must be capable of running entirely in Airplane Mode. The following features must process natively and completely offline:</p>
+<ul>
+  <li>Answer validation, scoring tracking, and active index shifting.</li>
+  <li>KBC-style lifeline computations (50-50 mask logic and backup question swapping).</li>
+  <li>Review Mode generation, color code shifting, and explanation rendering.</li>
+  <li>Local storage updates (Daily Streaks, Leaderboard additions, and Mistake Bucket parsing).</li>
+  <li>Native app-to-app WhatsApp deep-linking generation.</li>
+</ul>
+
+<h3>Technology Stack</h3>
+<ul>
+  <li><strong>Framework:</strong> React Native (Expo Workflow) managed via TypeScript.</li>
+  <li><strong>UI Styling:</strong> NativeWind (Tailwind CSS configuration for React Native).</li>
+  <li><strong>State Engine:</strong> Zustand (Lightweight local client-side state machine).</li>
+  <li><strong>Screen Locking:</strong> Hard-locked strictly to <strong>Portrait Mode</strong> across all activities.</li>
+  <li><strong>Storage Abstraction:</strong> Secure local JSON caching managed entirely via client storage abstractions (AsyncStorage/MMKV).</li>
+</ul>
+
+<h3>Runtime AI Engine Settings</h3>
+<ul>
+  <li>The app utilizes a secure initialization screen where the user inputs their personal Gemini API Key.</li>
+  <li>The key must be written instantly to secure client storage and <strong>never hardcoded, logged, or sent to any external server</strong> except directly to the official Google Gemini endpoint.</li>
+  <li><strong>Model Constraint:</strong> Hardwire all operations exclusively to the <code>gemini-3.5-flash</code> model payload endpoint to capture ultra-low latency generation cycles. Provide a configuration field inside settings to easily swap model pointers later.</li>
+</ul>
+
+<hr />
+
+<h2>3. Branding & Interactive UX Framework</h2>
+<p>Claude Code must leverage its peak frontend capabilities to build a fluid, child-first interaction canvas. Avoid standard rectangular buttons or bland dark modes. Deploy a layout utilizing soft pastel palettes (soothing lavender, fresh mint, soft sky blue, warm cream backdrops) paired with micro-interactions (bouncy scale-up triggers on selection, subtle shadows shifting to inner deep-shadow cards upon tap).</p>
+
+<h3>The Train Journey Metaphor Mapping</h3>
+<ul>
+  <li><strong>Welcome Screen / Setup:</strong> <em>"All Aboard!"</em> Gate</li>
+  <li><strong>Start Quiz Intent:</strong> <em>"Depart Now"</em> Trigger</li>
+  <li><strong>Subject Matrix Panel:</strong> <em>"Choose Your Destination"</em> Selection Grid</li>
+  <li><strong>Historical Leaderboard:</strong> The <em>"Engineer’s Log"</em></li>
+  <li><strong>Mistake Bucket Loop:</strong> The <em>"Repair Yard"</em></li>
+  <li><strong>Perfect Score Execution:</strong> <em>"Express Service!"</em> Celebration Screen</li>
+  <li><strong>Quiz Wrap-Up Screen:</strong> <em>"You reached the station!"</em> Status</li>
+</ul>
+
+<hr />
+
+<h2>4. Startup Onboarding & Main Dashboard</h2>
+<h3>Gateway Collection Fields</h3>
+<p>On initial launch, prompt the user for the following persistent parameters:</p>
+<ul>
+  <li><strong>Gemini Key Field:</strong> Secure input masking box (saved permanently to client <code>localStorage</code> cache).</li>
+  <li><strong>Student Identifier:</strong> "What is your name?" (Saves text state to inject personalized callouts across screens).</li>
+  <li><strong>Difficulty Level Selection:</strong> A prominent segmented slider allowing a toggle between:
+    <ul>
+      <li><strong>Challenger:</strong> Standard competitive Grade 2 Indian Olympiad criteria.</li>
+      <li><strong>Mastermind:</strong> Extreme top-of-class, high-achiever mastery tier.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Main Dashboard Components</h3>
+<ul>
+  <li><strong>Analytics HUD (Heads-Up Display):</strong> Top-pinned persistent metrics displaying:
+    <ul>
+      <li>🔥 <strong>Daily Streak Tracker:</strong> Computes consecutive days of activity via timestamp validation.</li>
+      <li>🏆 <strong>Engineer’s Log (Hall of Fame):</strong> Triggers an overlay presenting the top 5 historic scores, capturing the date stamp, subject type, and the difficulty tier ("Challenger" or "Mastermind").</li>
+    </ul>
+  </li>
+  <li><strong>Subject Destination Grid:</strong> Large interactive touch cards utilizing distinctive custom vector icons or fluid SVGs:
+    <ul>
+      <li><em>English:</em> Storybook icon (Grammar, Spellings, Antonyms, Synonyms, Homonyms, Animal Kingdom, Nature).</li>
+      <li><em>Science:</em> Rocket ship or swirling atom icon.</li>
+      <li><em>General Knowledge:</em> Sparkling lightbulb or Planet Earth icon.</li>
+      <li><em>Computers:</em> Friendly AI avatar or laptop icon.</li>
+      <li>🎯 <strong>Repair Yard (Mastery Mode):</strong> A special card that unlocks only when the local Mistake Bucket array contains failed questions. Selecting this lets the user play an offline subset containing only items previously missed. Questions clear out of the bucket instantly upon a correct offline response.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2>5. Single-Question Gameplay Architecture</h2>
+<ul>
+  <li><strong>Zero Cognitive Overload:</strong> Present exactly one question on screen at any single moment.</li>
+  <li><strong>Child-Finger Optimized Targets:</strong> Do not render standard web radio circles. Options must appear as large vertical touch blocks (minimum height 52dp) that glow or alter border hues dynamically upon single-select interaction.</li>
+  <li><strong>Backtracking Hub:</strong> Provide a clean "Skip Question" trigger coupled with an instantaneous top dropdown menu listing all skipped question markers. Tapping an item immediately returns the user to that question layout.</li>
+  <li><strong>KBC-Style Lifelines Panel:</strong> Provide exactly 2 lifeline buttons at the base of the screen, restricted strictly to <strong>one activation per 20-question set</strong>:
+    <ul>
+      <li>🌓 <strong>50-50 (Fifty-Fifty):</strong> Offline script mask that instantly targets the choice array, leaves the correct option and one random wrong option visible, and entirely greys out/disables the remaining two options.</li>
+      <li>🔄 <strong>Flip the Question:</strong> Discards the active question entirely. The state controller smoothly swaps it out and replaces it with the pre-fetched 21st question array element. The core denominator tracking the score is locked entirely to 20; the replacement question gracefully adopts the running position and index configuration of the flipped item to ensure absolute consistency in results tracking.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2>6. Single-Call Payload Contract (JSON Schema)</h2>
+<p>To support full offline durability, the app triggers exactly one call to <code>gemini-3.5-flash</code> at startup. The prompt forces the response payload to return as a single, un-fenced JSON structure adhering perfectly to this contract schema:</p>
+
+<pre><code>{
+  "metadata": {
+    "subject": "[Selected Subject Text]",
+    "difficulty": "[Challenger OR Mastermind]",
+    "generated_at": "YYYY-MM-DD",
+    "version": 1
+  },
+  "intro": "Hey [Name]! Welcome to the [Selected Difficulty] Express. Today we are exploring the amazing world of [Selected Subject]! Get ready to fuel your brain engine!",
+  "coach_tip": "Olympiads are all about checking the details! Read every option carefully before tapping your track switch!",
+  "score_feedback": {
+    "tier_under_12": "Fantastic try, [Name]! Every mistake helps our repair yard build a stronger train track. Let's practice again!",
+    "tier_12_to_15": "Wonderful chugging, [Name]! You cleared those tough [Selected Difficulty] signals beautifully. Let's aim even higher next time!",
+    "tier_16_to_18": "Superb engineering, [Name]! You are right on the edge of absolute perfection in the [Selected Difficulty] line!",
+    "tier_18_to_19": "Sensational run, [Name]! Just a tiny adjustment needed to hit a perfect 20 out of 20 on the [Selected Difficulty] rails next time!",
+    "tier_20": "ALL ABOARD THE CHIEF ENGINEER EXPRESS! Flawless victory, [Name]! You are the absolute, ultimate [Selected Difficulty] Mastermind!"
+  },
+  "questions": [
+    {
+      "id": "ENG-CH-001",
+      "question": "Which of these homonyms fits correctly into this train track sentence: 'The wind ____ the papers away'?",
+      "options": ["blue", "blew", "blow", "blown"],
+      "correct_index": 1,
+      "explanation": "Blew is the past tense action of blowing air, whereas blue is a beautiful color!",
+      "concept": "Homonyms"
+    }
+  ],
+  "answer_key": [1],
+  "backup_question": {
+    "id": "ENG-CH-BKP",
+    "question": "[Backup multiple choice question structured identically to the core array items above]",
+    "options": ["A", "B", "C", "D"],
+    "correct_index": 2,
+    "explanation": "Backup verification detail explanation.",
+    "concept": "Core Concepts"
+  }
+}</code></pre>
+
+<h3>Strict Client Validation Step</h3>
+<p>Before launching the game state, the client-side parser must execute a validation loop checking if <code>questions[i].correct_index === answer_key[i]</code>. If an anomaly is identified, code logic must trigger a quiet auto-retry once or execute a self-heal repair script before opening the gate to the child.</p>
+
+<hr />
+
+<h2>7. Post-Quiz Processing & Communication Hook</h2>
+<h3>Offline Validation & Score Metrics</h3>
+<ul>
+  <li><strong>Notation Constraint:</strong> Percentages are forbidden in the interface. All output values must render as <strong>"X out of 20"</strong> notation to maintain absolute clarity for a Grade 2 student.</li>
+  <li><strong>Visual Rewards:</strong> Map scores to physical graphical animations (e.g., 5 gleaming golden stars for a perfect 20 out of 20, dropping down dynamically relative to fractional tier groupings). Display the corresponding pre-fetched tier string from the <code>score_feedback</code> JSON payload block.</li>
+  <li><strong>Review Matrix:</strong> Present a post-game review stack. If an answer was wrong, flag the user's selected choice container in sharp Crimson Red, highlight the accurate option container in deep Emerald Green, and render the inline <code>explanation</code> bubble beneath it.</li>
+</ul>
+
+<h3>WhatsApp Communications Interface</h3>
+<p>Provide a native app-to-app deep-linking share button utilizing the <code>whatsapp://send?text=...</code> intent uri template structure. This completely bypasses intermediate web browser tabs, ensuring instant mobile communication mapping. Construct the message parameters explicitly using this structure:</p>
+<pre><code>🌟 *Brain Train Update for [Name]!* 🚂
+🎯 *Destination:* [Selected Subject]
+🏆 *Tier Level:* [Challenger / Mastermind]
+📊 *Score:* [X] out of 20
+🔥 *Current Daily Streak:* [X] Days Running!
+
+_Sent from my Olympiad Prep App_ 🚀</code></pre>
+
+<hr />
+
+<h2>8. Agentic Deployment Protocols (Claude Code Guidelines)</h2>
+<ol>
+  <li><strong>Autonomous Execution Loop:</strong> Initialize a completely local project repository workspace container. Scaffold all essential TypeScript modules, storage abstractions, layout schemas, and animation bindings internally. Debug and verify component performance loops without interrupting the user.</li>
+  <li><strong>GitHub Commits Hard Gate:</strong> Stage and execute orderly, clean commits inside your local Git repository tree. Pause execution and query the user explicitly for permissions and configuration environment tokens only when the foundational structure is 100% sound, verified, and ready to push to remote profiles.</li>
+  <li><strong>APK Compilation Hard Gate:</strong> Prepare all dependency libraries, asset manifest maps, and bundling config files required to generate a native Android container. <strong>Stop execution completely before compiling.</strong> Present the live, ready application matrix wireframe structure clearly to the user, and wait for explicit manual confirmation before generating the final production-ready APK package file.</li>
+</ol>
+
+</body>
+</html>

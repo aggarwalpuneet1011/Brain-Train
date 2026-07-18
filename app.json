@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "Brain Train",
+    "slug": "BrainTrain",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#EAF6FF",
+    "icon": "./assets/icon.png",
+    "android": {
+      "package": "com.puneet.braintrain",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#EAF6FF"
+      }
+    },
+    "plugins": [
+      "expo-secure-store"
+    ],
+    "owner": "puneet1011",
+    "extra": {
+      "eas": {
+        "projectId": "357ec373-3d2b-44cf-98c1-68ff5edc7eae"
+      }
+    }
+  }
+}

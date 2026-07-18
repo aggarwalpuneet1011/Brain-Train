@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Brain Train Master PRD</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Brain Train Master PRD</h1>
+</header>
+<h1 id="brain-train">Brain Train 🚂</h1>
+<h2 id="master-product-requirements-document-prd">Master Product
+Requirements Document (PRD)</h2>
+<blockquote>
+<p><strong>Tagline:</strong> <em>All Aboard for Olympiad
+Success!</em></p>
+</blockquote>
+<h2 id="vision">Vision</h2>
+<p>Brain Train is a premium Android Olympiad preparation app for an
+advanced Grade 2 student in India. Claude Code is the development agent.
+Google Gemini is the <strong>only</strong> runtime AI provider.</p>
+<h2 id="core-architecture">Core Architecture</h2>
+<h3 id="offline-guarantee-mandatory">Offline Guarantee (Mandatory)</h3>
+<p>Once the quiz package has been downloaded, the device may be placed
+into Airplane Mode and the <strong>entire quiz experience must continue
+to work without any further network access</strong>, including: - Answer
+validation - Scoring - Lifelines - Explanations - Review Mode - Hall of
+Fame updates - Daily Streak updates - Mistake Bucket updates - WhatsApp
+sharing</p>
+<h2 id="technology">Technology</h2>
+<ul>
+<li>React Native (Expo)</li>
+<li>TypeScript</li>
+<li>NativeWind</li>
+<li>Zustand</li>
+<li>Storage abstraction</li>
+<li>Portrait-only Android</li>
+</ul>
+<h2 id="runtime-ai">Runtime AI</h2>
+<ul>
+<li>User enters Gemini API Key.</li>
+<li>User enters Gemini Model (default:
+<code>gemini-3.5-flash</code>).</li>
+<li>Never hardcode secrets.</li>
+<li>Model name must be configurable in Settings.</li>
+</ul>
+<h2 id="user-experience-visual-design-highest-priority">User Experience
+&amp; Visual Design (Highest Priority)</h2>
+<p>This application is intended for a young child and must feel joyful,
+magical, and premium rather than corporate.</p>
+<p>Claude Code should fully leverage its UI/UX design strengths to
+produce an exceptional mobile experience. Do <strong>not</strong>
+generate a generic CRUD interface or basic Material Design screens.
+Instead, create a polished, delightful experience with thoughtful visual
+hierarchy, playful interactions, and production-quality
+craftsmanship.</p>
+<h3 id="design-principles">Design Principles</h3>
+<ul>
+<li>Mobile-first, portrait-only.</li>
+<li>Every screen should fit without vertical scrolling whenever
+practical.</li>
+<li>Soft pastel palette (lavender, mint, sky blue, warm cream).</li>
+<li>Rounded cards and generous whitespace.</li>
+<li>Large touch targets (minimum 52dp).</li>
+<li>Smooth spring animations and subtle micro-interactions.</li>
+<li>Friendly illustrations, icons, and tasteful SVG animations.</li>
+<li>Child-friendly typography with excellent readability.</li>
+<li>Consistent visual language throughout the app.</li>
+</ul>
+<h3 id="emotional-experience">Emotional Experience</h3>
+<p>The app should feel like boarding a magical learning train. Every
+interaction should reinforce the Brain Train theme with encouraging
+language, delightful transitions, and positive reinforcement. The
+experience should inspire curiosity rather than test anxiety.</p>
+<h2 id="branding">Branding</h2>
+<ul>
+<li>Welcome: <strong>All Aboard!</strong></li>
+<li>Start Quiz: <strong>Depart Now</strong></li>
+<li>Subjects: <strong>Choose Your Destination</strong></li>
+<li>Hall of Fame: <strong>Engineer’s Log</strong></li>
+<li>Mistake Bucket: <strong>Repair Yard</strong></li>
+<li>Perfect Score: <strong>Express Service!</strong></li>
+<li>Quiz Complete: <strong>You reached the station!</strong></li>
+</ul>
+<h2 id="startup-flow">Startup Flow</h2>
+<p>Collect: - Student name - API key - Model - Difficulty</p>
+<p>If branding assets are missing, stop and request: - App icon - Splash
+screen - Package identifier - App name - Accent color</p>
+<h2 id="dashboard">Dashboard</h2>
+<p>Display: - Daily Streak - Engineer’s Log - English - Science -
+General Knowledge - Computers - Repair Yard - Settings</p>
+<h2 id="gemini-api-strategy">Gemini API Strategy</h2>
+<h3 id="maximum-network-calls">Maximum Network Calls</h3>
+<p>The application should make <strong>at most two Gemini API
+calls</strong> during a user session.</p>
+<p><strong>Call 1 (Optional): Session Initialization</strong> Used only
+if dynamic coaching content is required before quiz generation.</p>
+<p>May include: - Greeting - Streak acknowledgement - Leaderboard
+recognition</p>
+<p><strong>Call 2 (Mandatory): Quiz Session Package</strong></p>
+<p>Exactly one request generates the complete quiz package.</p>
+<p>The prompt includes: - Student name - Subject - Difficulty - Current
+streak - Best score - Hall of Fame summary - Mistake Bucket summary -
+Weak topics</p>
+<p>The response must contain <strong>everything required</strong> to
+complete the quiz offline.</p>
+<h2 id="required-json-contract">Required JSON Contract</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;metadata&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;subject&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;difficulty&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;generated_at&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;version&quot;</span><span class="fu">:</span><span class="dv">1</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;intro&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;coach_tip&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;achievement_messages&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;new_streak&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;new_high_score&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;perfect_score&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;mastery_completed&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;score_feedback&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;0-11&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;12-15&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;16-18&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;19&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;20&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;questions&quot;</span><span class="fu">:</span><span class="ot">[</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span><span class="st">&quot;SCI-001&quot;</span><span class="fu">,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;question&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;options&quot;</span><span class="fu">:</span><span class="ot">[</span><span class="st">&quot;&quot;</span><span class="ot">,</span><span class="st">&quot;&quot;</span><span class="ot">,</span><span class="st">&quot;&quot;</span><span class="ot">,</span><span class="st">&quot;&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;correct_index&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;explanation&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;concept&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;answer_key&quot;</span><span class="fu">:</span><span class="ot">[</span><span class="dv">0</span><span class="ot">,</span><span class="dv">2</span><span class="ot">,</span><span class="dv">1</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;backup_question&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;id&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;question&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;options&quot;</span><span class="fu">:</span><span class="ot">[</span><span class="st">&quot;&quot;</span><span class="ot">,</span><span class="st">&quot;&quot;</span><span class="ot">,</span><span class="st">&quot;&quot;</span><span class="ot">,</span><span class="st">&quot;&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;correct_index&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;explanation&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;concept&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="validation">Validation</h3>
+<ul>
+<li>Validate JSON.</li>
+<li>Retry once if invalid.</li>
+<li>Attempt repair.</li>
+<li>Reject inconsistent payloads (e.g. <code>correct_index</code> does
+not match <code>answer_key</code>).</li>
+<li>Never crash.</li>
+</ul>
+<h2 id="gameplay">Gameplay</h2>
+<ul>
+<li>One question per screen</li>
+<li>50-50 once</li>
+<li>Flip Question once (uses backup question)</li>
+<li>No network after package download</li>
+</ul>
+<h2 id="results">Results</h2>
+<p>Display: - X out of 20 - Stars - AI coaching - Achievement messages -
+Full review with explanations - WhatsApp sharing</p>
+<h2 id="persistence">Persistence</h2>
+<p>Store: - Scores - Hall of Fame - Daily Streak - Mistake Bucket -
+Settings</p>
+<h2 id="project-structure">Project Structure</h2>
+<p>/components /screens /services /storage /hooks /utils /types /assets
+/tests</p>
+<h2 id="acceptance-tests">Acceptance Tests</h2>
+<ul>
+<li>Portrait only</li>
+<li>Offline after quiz package download</li>
+<li>Lifelines work exactly once</li>
+<li>Restart preserves state</li>
+<li>No crashes</li>
+<li>JSON validation passes</li>
+<li>Hall of Fame updates</li>
+<li>Daily Streak updates</li>
+<li>Repair Yard behaves correctly</li>
+</ul>
+<h2 id="deliverables">Deliverables</h2>
+<ul>
+<li>Clean Git repository</li>
+<li>README</li>
+<li>Tests</li>
+<li>APK-ready project</li>
+<li>Stop before GitHub push</li>
+<li>Stop before APK build until user approval</li>
+</ul>
+</body>
+</html>
