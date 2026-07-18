@@ -10,7 +10,6 @@ AI provider. Same stack and delivery workflow as FableAble.
 
 - **One question per screen**, four large touch-friendly options, instant
   feedback with a kid-friendly explanation.
-- **Two lifelines**, each usable once per quiz: 50-50 and Flip Question.
 - **Engineer's Log** (Hall of Fame), **Repair Yard** (Mistake Bucket that
   auto-clears a concept once you answer it right), daily streak, stars.
 - **Genuinely offline after generation.** Gemini is called at most once per
