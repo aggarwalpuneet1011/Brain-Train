@@ -4,7 +4,7 @@
 
 A premium, offline-first Olympiad prep app for an advanced Grade 2 student.
 Built with Expo (React Native), using Google Gemini as the **only** runtime
-AI provider. Same stack and delivery workflow as FableAble.
+AI provider.
 
 ## What it does
 
