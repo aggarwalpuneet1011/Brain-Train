@@ -19,7 +19,7 @@ AI provider. Same stack and delivery workflow as FableAble.
 
 ## Setup
 
-```bash
+```
 npm install
 npx expo start        # scan the QR with Expo Go for a quick preview
 ```
@@ -38,7 +38,7 @@ app update needed.
 This mirrors FableAble exactly — a cloud build via EAS that hands back a
 direct APK download link, installable without the Play Store or Expo Go:
 
-```bash
+```
 npm install -g eas-cli      # if not already installed
 eas login                   # your Expo account (owner: puneet1011)
 eas build -p android --profile preview
@@ -47,9 +47,8 @@ eas build -p android --profile preview
 The `preview` profile in `eas.json` is set to `buildType: apk`. When the
 build finishes, EAS gives you a URL — open it on the phone, download, install.
 
-> Per the project spec, the workflow **stops before GitHub push and before
-> the APK build** to wait for your go-ahead. Run the `eas build` command
-> above when you're ready.
+An APK has been built from this profile and installed on-device. Re-run the
+command above to produce a fresh build after any code change.
 
 ## Project structure
 
@@ -72,7 +71,7 @@ assets/                   app icon, splash, adaptive icon
 
 `src/services/gemini.js` uses Gemini's native structured-output
 (`responseSchema`) to force the exact JSON contract from the PRD, then
-validates it: 20 questions, 4 options each, and `questions[i].correct_index
-== answer_key[i]` for every i. On a validation failure it regenerates once;
-on network/auth/safety failures it surfaces a specific, honest, kid-safe
-error screen rather than crashing.
+validates it: 20 questions, 4 options each, and
+`questions[i].correct_index == answer_key[i]` for every i. On a validation
+failure it regenerates once; on network/auth/safety failures it surfaces a
+specific, honest, kid-safe error screen rather than crashing.
