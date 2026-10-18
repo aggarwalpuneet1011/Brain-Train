@@ -176,7 +176,11 @@ function validatePackage(pkg) {
 // signal is a standard AbortSignal so the user can back out while Gemini is
 // still "thinking" (fetch supports this natively).
 async function callGeminiRaw({ apiKey, model, systemInstruction, userPrompt, onStage, signal }) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+  // Model IDs are lowercase and hyphenated ("gemini-3.8-flash"). People type the
+  // display name ("Gemini 3.6 Flash"), which Google answers with a 404, so
+  // normalise whitespace and case before building the URL.
+  const modelId = String(model || DEFAULT_MODEL).trim().toLowerCase().replace(/\s+/g, '-');
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
 
   const body = {
     contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
