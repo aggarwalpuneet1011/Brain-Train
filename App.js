@@ -79,6 +79,7 @@ function Root() {
 
   const [subject, setSubject] = useState(null);
   const [quizError, setQuizError] = useState(null);
+  const [quizErrorDetail, setQuizErrorDetail] = useState('');
   const [loadingStage, setLoadingStage] = useState(null);
   const abortControllerRef = useRef(null);
 
@@ -291,6 +292,7 @@ function Root() {
       setScreen('quiz');
     } catch (e) {
       if (e.message === 'CANCELLED') return; // cancelGeneration() already navigated away
+      setQuizErrorDetail(e.detail || String(e.message || e).slice(0, 200));
       setQuizError(e.message || 'UNKNOWN');
     } finally {
       abortControllerRef.current = null;
@@ -540,6 +542,7 @@ function Root() {
     return (
       <LoadingScreen
         error={quizError}
+        detail={quizErrorDetail}
         stage={loadingStage}
         onRetry={retryQuiz}
         onOpenSettings={() => setScreen('settings')}

@@ -14,7 +14,7 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
-import { DEFAULT_MODEL } from './gemini';
+import { DEFAULT_MODEL, RETIRED_MODELS } from './gemini';
 
 const GLOBAL_KEYS = {
   apiKey: 'braintrain_gemini_api_key',      // SecureStore
@@ -51,7 +51,8 @@ export async function setApiKey(key) {
 
 export async function getModel() {
   const m = await AsyncStorage.getItem(GLOBAL_KEYS.model);
-  return m || DEFAULT_MODEL;
+  if (!m || RETIRED_MODELS.includes(m.trim())) return DEFAULT_MODEL;
+  return m;
 }
 export async function setModel(model) {
   await AsyncStorage.setItem(GLOBAL_KEYS.model, (model || DEFAULT_MODEL).trim());

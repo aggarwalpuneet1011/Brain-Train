@@ -18,7 +18,7 @@ const ERROR_COPY = {
   },
   MODEL_404: {
     title: 'This train model retired',
-    body: 'The Gemini model in Settings is no longer available. Pick a current one (e.g. gemini-3.5-flash) and try again.',
+    body: 'The Gemini model in Settings is no longer available. Pick a current one (e.g. gemini-3.8-flash) and try again.',
   },
   RATE_LIMIT: {
     title: 'Too many trains at once',
@@ -56,7 +56,7 @@ const STAGE_COPY = {
 // timing), layered on top of whatever the real stage is.
 const SLOW_HINT_MS = 9000;
 
-export default function LoadingScreen({ error, stage, onRetry, onOpenSettings, onCancel }) {
+export default function LoadingScreen({ error, detail, stage, onRetry, onOpenSettings, onCancel }) {
   const spin = useRef(new Animated.Value(0)).current;
   const [slow, setSlow] = useState(false);
 
@@ -81,6 +81,7 @@ export default function LoadingScreen({ error, stage, onRetry, onOpenSettings, o
         <Text style={{ fontSize: 48 }}>🚧</Text>
         <Text style={[TYPE.h2, { textAlign: 'center', marginTop: 12 }]}>{copy.title}</Text>
         <Text style={[TYPE.bodyDim, { textAlign: 'center', marginTop: 8, marginBottom: 24 }]}>{copy.body}</Text>
+        {!!detail && <Text style={[TYPE.bodyDim, { textAlign: 'center', fontSize: 11, marginBottom: 16 }]}>{detail}</Text>}
         <TrainButton label="Try Again" onPress={onRetry} style={{ marginBottom: 12 }} />
         <TrainButton label="Open Settings" variant="ghost" onPress={onOpenSettings} style={{ marginBottom: 12 }} />
         <TrainButton label="Back to Menu" variant="ghost" onPress={onCancel} />

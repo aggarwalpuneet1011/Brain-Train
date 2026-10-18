@@ -22,7 +22,11 @@ const QUESTION_COUNT = 20;
 // a good fit for reliable JSON quiz generation. If it ever retires, swap
 // the default here and the app keeps working (model is also editable from
 // Settings without a code change, per the PRD).
-export const DEFAULT_MODEL = 'gemini-3.5-flash';
+export const DEFAULT_MODEL = 'gemini-3.8-flash';
+
+// Model IDs Google has superseded or removed. getModel() in storage.js swaps
+// any of these (possibly saved on-device from an older build) for the default.
+export const RETIRED_MODELS = ['gemini-3.5-flash', 'gemini-2.0-flash', 'gemini-2.0-flash-001'];
 
 const SAFETY_SETTINGS = [
   { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_LOW_AND_ABOVE' },
@@ -182,7 +186,7 @@ async function callGeminiRaw({ apiKey, model, systemInstruction, userPrompt, onS
       responseMimeType: 'application/json',
       responseSchema: RESPONSE_SCHEMA,
       temperature: 0.8,
-      maxOutputTokens: 8192,
+      maxOutputTokens: 16384, // thinking tokens count against this cap; 8192 truncated 20-question packages
     },
   };
 
@@ -202,10 +206,17 @@ async function callGeminiRaw({ apiKey, model, systemInstruction, userPrompt, onS
 
   onStage?.('receiving');
 
-  if (res.status === 404) throw new Error('MODEL_404'); // retired/typo'd model id
-  if (res.status === 400 || res.status === 403) throw new Error('BAD_KEY');
-  if (res.status === 429) throw new Error('RATE_LIMIT');
-  if (!res.ok) throw new Error('API_' + res.status);
+  if (!res.ok) {
+    // Keep Google's own message so the error screen can show the real cause
+    // instead of guessing (a 400 is not always a bad key).
+    let detail = '';
+    try { detail = (await res.json())?.error?.message || ''; } catch (e) { /* non-JSON body */ }
+    const fail = (code) => { const err = new Error(code); err.detail = `HTTP ${res.status}: ${detail}`.slice(0, 300); return err; };
+    if (res.status === 404) throw fail('MODEL_404'); // retired/typo'd model id
+    if (res.status === 403 || (res.status === 400 && /api key/i.test(detail))) throw fail('BAD_KEY');
+    if (res.status === 429) throw fail('RATE_LIMIT');
+    throw fail('API_' + res.status);
+  }
 
   const data = await res.json();
 
